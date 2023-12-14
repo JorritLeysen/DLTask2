@@ -1,7 +1,7 @@
 import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.preprocessing import image
-from tensorflow.keras.utils import image_dataset_from_directory
+from tensorflow.keras.preprocessing import image_dataset_from_directory
 from tensorflow.keras.models import load_model
 import numpy as np
 from sklearn.metrics import confusion_matrix
@@ -19,7 +19,10 @@ def load_pretrained_model():
     return model
 
 def main():
+    st.set_option('deprecation.showPyplotGlobalUse', False)
     st.title("Image Classifier")
+
+    class_names = ['bicycle', 'boat', 'car', 'motorcycle', 'plane', 'truck']
 
     # Load the pre-trained model
     pretrained_model = load_pretrained_model()
@@ -41,7 +44,8 @@ def main():
         # Display predictions
         st.write("Predictions:")
         for i, prob in enumerate(predictions[0]):
-            st.write(f"Class {i}: Probability {prob:.4f}")
+            class_name = class_names[i]
+            st.write(f"Class {class_name}: Probability {prob:.4f}")
 
     # Evaluate the model on the test dataset
     st.subheader("Test on testimages")
