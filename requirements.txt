@@ -1,0 +1,10 @@
+selenium
+scikit-learn
+requests
+beautifulsoup4
+tensorflow
+streamlit
+matplotlib
+numpy
+seaborn
+psutil
